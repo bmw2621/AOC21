@@ -1,12 +1,4 @@
-import fetch from "node-fetch";
-import Cookie from "../utils/getCookie.mjs";
-
-async function getData() {
-  const data = await fetch("https://adventofcode.com/2021/day/1/input", {
-    headers: { Cookie },
-  }).then((resp) => resp.text());
-  return data.split("\n").map(Number);
-}
+import { fetchAocInput } from "../utils/fetchAocInput.mjs";
 
 const processData1 = (data) =>
   data.reduce(
@@ -25,10 +17,10 @@ const processData2 = (data) => {
   return processData1(windows);
 };
 
-getData()
+fetchAocInput("/1/input")
   .then(processData1)
   .then((data) => console.log(`Part 1: ${data.count}`));
 
-getData()
+fetchAocInput("/1/input")
   .then(processData2)
   .then((data) => console.log(`Part 2: ${data.count}`));
