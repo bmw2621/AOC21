@@ -1,10 +1,10 @@
-const fs = require("fs/promises");
+import fetch from "node-fetch";
+import Cookie from "../utils/getCookie.mjs";
 
 async function getData() {
-  const data = await fs.readFile(
-    "/Users/benjaminwinchester/dev/aoc21/day1/input1.txt",
-    "utf8"
-  );
+  const data = await fetch("https://adventofcode.com/2021/day/1/input", {
+    headers: { Cookie },
+  }).then((resp) => resp.text());
   return data.split("\n").map(Number);
 }
 
