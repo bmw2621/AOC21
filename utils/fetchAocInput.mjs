@@ -6,5 +6,5 @@ export const fetchAocInput = async (path) => {
   const data = await fetch(url, {
     headers: { Cookie },
   }).then((resp) => resp.text());
-  return data.split("\n").map(Number);
+  return data;
 };
